@@ -1,0 +1,35 @@
+#btn-wrapper{
+    width:100%;
+    height:auto;
+    display: flex;
+    flex-direction: column;
+}
+#btn-wrapper button{
+    background-color: #DCDCDC;
+    border:none;
+    padding:10px;
+    color:#FFF;
+    font-weight: bold;
+}
+#portfolio-box-wrapper{
+    width:100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.portfolio-box{
+    list-style-type: none;
+    background-color: #DCDCDC;
+    display: flex;
+    flex-flow: row nowrap;
+}
+.portfolio{
+    width:45%;
+    background-color: #FFF;
+    margin:20px;
+    text-align: center;
+    font-weight: 900;
+    border-radius: 20px;
+    border:2px solid #414449;
+    padding:30px;
+}
