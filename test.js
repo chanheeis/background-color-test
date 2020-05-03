@@ -1,5 +1,6 @@
 $(document).ready(function(){
     var currentScrollPosition=0;
+    var uiTopList=getUlTopList();
 
     foldButtonToggle();
     setBackgroundColor();
@@ -16,24 +17,31 @@ $(document).ready(function(){
         ].join(''));
         foldButtonToggle();
         setBackgroundColor();
-        getUlTopList();
+        uiTopList=getUlTopList();
     });
     //포트폴리오 접기 버튼 클릭 시 동작 정의
     $('#fold-btn').click(function(){
+        currentScrollPosition=0;
+
         initializeUlList();
         setBackgroundColor();
         foldButtonToggle();
-        getUlTopList();
+        uiTopList=getUlTopList();
     });
     //마우스 스크롤 움직임에 따른 동작 정의
     $('html,body').on('mousewheel DOMMouseScroll',function(e){
-        console.log('==================');
-        console.log('clientY = '+e.originalEvent.clientY);
-        console.log('deltaY = '+e.originalEvent.deltaY);
-        console.log('layerY = '+e.originalEvent.layerY);
-        console.log('movementY = '+e.originalEvent.movementY);
-        console.log('wheelDeltaY = '+e.originalEvent.wheelDeltaY);
-        console.log('==================');
+        console.log(e.originalEvent);
+        if(e.originalEvent.deltaY<0){
+            if(currentScrollPosition>0){
+                currentScrollPosition--;
+                $('html,body').stop().animate({'scrollTop':uiTopList[currentScrollPosition]},1400);
+            }
+        }else{
+            if(currentScrollPosition<uiTopList.length-1){
+                currentScrollPosition++;
+                $('html,body').stop().animate({'scrollTop':uiTopList[currentScrollPosition]},1400);
+            }
+        }
     })
 })
 
